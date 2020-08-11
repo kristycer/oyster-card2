@@ -8,7 +8,7 @@ MINIMUM_BALANCE = 1
     def initialize
         @balance = 0
         @in_use = true
-        @entry_station 
+        @entry_station
         @journey_list = []
         @exit_station
     end
@@ -16,30 +16,31 @@ MINIMUM_BALANCE = 1
     def top_up(money)
         fail 'Maximum balance of 90 reached' if money + balance > MAXIMUM_BALANCE
         @balance += money
-    end 
+    end
 
     def touch_in(station)
         fail 'not enough funds: top up' if balance < MINIMUM_BALANCE
+        @in_use = true
         @entry_station = station
-    end 
+    end
 
     def touch_out(station)
        deduct(MINIMUM_BALANCE)
-       @entry_station = nil
-       @in_use = true
+       @in_use = false
        @journey_list
        @exit_station = station
-
-    end 
+       @journey_list << { entry_station: @entry_station, exit_station: @exit_station }
+       @entry_station = nil
+    end
 
     def in_journey
         @in_use
-        
+
     end
 
-   private 
+   private
 
     def deduct(money)
         @balance -= money
     end
-end 
+end
