@@ -51,10 +51,12 @@ describe '#in_journey' do
   end
  end
 
+# this test will change
  it 'has an empty list of journeys by default' do
    expect(subject.journey_list).to eq([])
  end
 
+# this test will change
  it 'checks that touching in and out creates one journey' do
    subject.top_up(10)
    subject.touch_in("old street")

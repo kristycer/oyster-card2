@@ -1,6 +1,6 @@
 class Oystercard
 
-attr_reader :balance, :entry_station , :journey_list, :exit_station
+attr_reader :balance, :entry_station, :exit_station, :journey_list
 MAXIMUM_BALANCE = 90
 MINIMUM_BALANCE = 1
 
@@ -9,8 +9,8 @@ MINIMUM_BALANCE = 1
         @balance = 0
         @in_use = true
         @entry_station
-        @journey_list = []
         @exit_station
+        @journey_list = []
     end
 
     def top_up(money)
