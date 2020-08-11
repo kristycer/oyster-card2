@@ -24,10 +24,12 @@ MINIMUM_BALANCE = 1
     end 
 
     def touch_out
+       deduct(MINIMUM_BALANCE)
+       @in_use = false
     end 
 
     def in_journey
-        @in_use 
+        @in_use
         
     end
    

@@ -24,6 +24,7 @@ describe '#top_up' do
 
         end
     end
+  
   describe '#touch_in' do
     it { is_expected.to respond_to(:touch_in) }
 
@@ -32,17 +33,21 @@ describe '#top_up' do
       end 
     end 
   
-  describe '#touch_out' do
+describe '#touch_out' do
     it { is_expected.to respond_to(:touch_out) }
     
- it { is_expected.to respond_to(:in_journey) }
-  end 
+    it { is_expected.to respond_to(:in_journey) }
 
+it 'checks if the user was charged' do
+    subject.top_up(10)
+    expect { subject.touch_out }.to change{ subject.balance }.by (-Oystercard::MINIMUM_BALANCE)
+  end 
+end 
 describe '#in_journey' do
- it 'checks if user is on the journey' do
-subject.top_up(10)
-subject.touch_in
-expect(subject.in_journey).to eq(true)
+    it 'checks if user is on the journey' do
+    subject.top_up(10)
+    subject.touch_in
+    expect(subject.in_journey).to eq(true)
   end 
  end
 end 
