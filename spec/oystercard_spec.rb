@@ -26,10 +26,20 @@ describe '#top_up' do
     end
   describe '#touch_in' do
     it { is_expected.to respond_to(:touch_in) }
+
     end 
   
   describe '#touch_out' do
     it { is_expected.to respond_to(:touch_out) }
-end
+    
  it { is_expected.to respond_to(:in_journey) }
   end 
+
+describe '#in_journey' do
+ it 'checks if user is on the journey' do
+subject.top_up(10)
+subject.touch_in
+expect(subject.in_journey).to eq(true)
+  end 
+ end
+end 

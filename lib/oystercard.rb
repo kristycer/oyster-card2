@@ -6,6 +6,7 @@ MAXIMUM_BALANCE = 90
 
     def initialize
         @balance = 0
+        @in_use = true
     end
 
     def top_up(money)
@@ -24,6 +25,8 @@ MAXIMUM_BALANCE = 90
     end 
 
     def in_journey
+        @in_use 
+        
     end
    
 end 
