@@ -27,6 +27,9 @@ describe '#top_up' do
   describe '#touch_in' do
     it { is_expected.to respond_to(:touch_in) }
 
+    it 'raises an error: not enough funds' do
+    expect{ subject.touch_in }.to raise_error 'not enough funds: top up'
+      end 
     end 
   
   describe '#touch_out' do
