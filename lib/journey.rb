@@ -23,7 +23,7 @@ attr_reader :entry_station, :exit_station
   def fare
     if @exit_station == nil 
     PENALTY_FARE
-    elsif @entry_station.zone > 2
+    elsif @entry_station.zone  == 3 && @exit_station.zone == 5
       3
     else 
     NORMAL_FARE
@@ -36,8 +36,5 @@ end
 
   end
 
-  #  def finish(station)
-  #    self
-  #  end
-
+  
 end
