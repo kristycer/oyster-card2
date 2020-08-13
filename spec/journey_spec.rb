@@ -18,6 +18,7 @@ describe Journey do
 
   context 'given an entry station' do
     subject { described_class.new(entry_station: station) }
+
     it 'has an entry station' do
       expect(subject.entry_station).to eq station
     
@@ -34,14 +35,24 @@ describe Journey do
       end
 
    it 'calculates a fare' do
-     expect(subject.fare).to eq 6
+     expect(subject.fare).to eq 1
   
+    end
+
+    it 'calculates a fare for zone 3 to 5' do
+
+      update_zones(3,5)
+      expect(subject.fare).to eq 3
     end
 
     it 'knows if a journey is complete' do
       expect(subject).to be_complete
 
     end
+  end 
+    def update_zones(entry_zone, exit_zone)
+      allow(station).to receive(:zone).and_return(entry_zone)
+      allow(other_station).to receive(:zone).and_return(exit_zone)
    end
   end 
 end 

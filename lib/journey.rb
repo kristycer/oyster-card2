@@ -5,6 +5,7 @@ class Journey
 attr_reader :entry_station, :exit_station
 
   PENALTY_FARE = 6
+  NORMAL_FARE = 1
 
   def initialize(entry_station: nil)
     @entry_station = entry_station
@@ -17,11 +18,18 @@ attr_reader :entry_station, :exit_station
     @complete = true
     self 
     
-    
   end 
+
   def fare
+    if @exit_station == nil 
     PENALTY_FARE
+    elsif @entry_station.zone > 2
+      3
+    else 
+    NORMAL_FARE
   end
+end 
+
 
   def complete?
     @complete 
